@@ -28,19 +28,15 @@ y = data['Outcome']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE)
 
-# Standardize the features
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# Build and train the model
 model = RandomForestClassifier(random_state=RANDOM_STATE)
 model.fit(X_train, y_train)
 
-# Make predictions
 y_pred = model.predict(X_test)
 
-# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred)
 
